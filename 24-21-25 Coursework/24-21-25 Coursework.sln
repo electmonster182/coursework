@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34814.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "24-21-25 Coursework", "24-21-25 Coursework.csproj", "{63DD769B-DE02-4800-84EA-68F3D02124C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Questions", "Questions", "{1002CF76-24DC-4923-99FB-692BDD12BF51}"
+	ProjectSection(SolutionItems) = preProject
+		DragDrop.cs = DragDrop.cs
+		DragDrop.Designer.cs = DragDrop.Designer.cs
+		DragDrop.resx = DragDrop.resx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63DD769B-DE02-4800-84EA-68F3D02124C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63DD769B-DE02-4800-84EA-68F3D02124C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63DD769B-DE02-4800-84EA-68F3D02124C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63DD769B-DE02-4800-84EA-68F3D02124C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3A1DA6E-66C1-4382-BD5B-C43C3B151446}
+	EndGlobalSection
+EndGlobal
