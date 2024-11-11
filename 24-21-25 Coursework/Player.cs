@@ -18,6 +18,7 @@ namespace _24_21_25_Coursework
         string password;
         Image avatar;
         int score;
+        int highscore;
 
         public Player()
         {
@@ -25,16 +26,18 @@ namespace _24_21_25_Coursework
             password = "";
             avatar = null;
             score = 0;
+            highscore = 0;
         }
 
-        public Player(string username, string password, Image avatar,int score)
+        public Player(string username, string password, Image avatar,int score,int highscore)
         {
             Username = username;
             Password = password;
             Avatar = avatar;
+            HighScore = highscore;
         }
 
-
+       
         public string Username
         {
             get { return username; }
@@ -55,6 +58,11 @@ namespace _24_21_25_Coursework
         { 
             get { return score; } 
             set { score = value; } 
+        }
+        public int HighScore
+        {
+            get { return highscore; }
+            set { highscore = value; }
         }
         public List<Player> readFileToList() 
         {

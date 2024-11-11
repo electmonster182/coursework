@@ -45,7 +45,7 @@ namespace _24_21_25_Coursework
             // 
             this.txtUsername.BackColor = System.Drawing.Color.White;
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsername.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.Location = new System.Drawing.Point(279, 159);
             this.txtUsername.Name = "txtUsername";
@@ -59,7 +59,7 @@ namespace _24_21_25_Coursework
             // 
             this.txtPassword.BackColor = System.Drawing.Color.White;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.SystemColors.MenuText;
             this.txtPassword.Location = new System.Drawing.Point(279, 222);
             this.txtPassword.Name = "txtPassword";
@@ -71,7 +71,8 @@ namespace _24_21_25_Coursework
             // btnLogIn
             // 
             this.btnLogIn.BackColor = System.Drawing.Color.White;
-            this.btnLogIn.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogIn.ForeColor = System.Drawing.Color.Black;
             this.btnLogIn.Location = new System.Drawing.Point(328, 303);
             this.btnLogIn.Name = "btnLogIn";
@@ -85,11 +86,12 @@ namespace _24_21_25_Coursework
             // 
             this.lblDontHaveAcount.AutoSize = true;
             this.lblDontHaveAcount.BackColor = System.Drawing.Color.White;
+            this.lblDontHaveAcount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDontHaveAcount.DisabledLinkColor = System.Drawing.Color.White;
-            this.lblDontHaveAcount.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDontHaveAcount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDontHaveAcount.Location = new System.Drawing.Point(254, 371);
             this.lblDontHaveAcount.Name = "lblDontHaveAcount";
-            this.lblDontHaveAcount.Size = new System.Drawing.Size(272, 19);
+            this.lblDontHaveAcount.Size = new System.Drawing.Size(238, 20);
             this.lblDontHaveAcount.TabIndex = 6;
             this.lblDontHaveAcount.TabStop = true;
             this.lblDontHaveAcount.Text = "Don\'t have an account click here";
@@ -99,6 +101,7 @@ namespace _24_21_25_Coursework
             // 
             this.btnShowpasswordLogIn.AutoSize = true;
             this.btnShowpasswordLogIn.BackColor = System.Drawing.Color.White;
+            this.btnShowpasswordLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShowpasswordLogIn.Location = new System.Drawing.Point(279, 268);
             this.btnShowpasswordLogIn.Name = "btnShowpasswordLogIn";
             this.btnShowpasswordLogIn.Size = new System.Drawing.Size(102, 17);
@@ -110,7 +113,8 @@ namespace _24_21_25_Coursework
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.White;
-            this.btnExit.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(11, 11);
             this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
@@ -123,7 +127,8 @@ namespace _24_21_25_Coursework
             // btnCarQuizText
             // 
             this.btnCarQuizText.BackColor = System.Drawing.Color.White;
-            this.btnCarQuizText.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarQuizText.Enabled = false;
+            this.btnCarQuizText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCarQuizText.ForeColor = System.Drawing.Color.Black;
             this.btnCarQuizText.Location = new System.Drawing.Point(318, 34);
             this.btnCarQuizText.Margin = new System.Windows.Forms.Padding(2, 3, 3, 3);
@@ -139,7 +144,9 @@ namespace _24_21_25_Coursework
             // 
             this.txtEnterPassword.BackColor = System.Drawing.Color.White;
             this.txtEnterPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEnterPassword.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEnterPassword.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtEnterPassword.Enabled = false;
+            this.txtEnterPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEnterPassword.ForeColor = System.Drawing.Color.Black;
             this.txtEnterPassword.Location = new System.Drawing.Point(279, 197);
             this.txtEnterPassword.Name = "txtEnterPassword";
@@ -153,7 +160,9 @@ namespace _24_21_25_Coursework
             // 
             this.txtEnterUsername.BackColor = System.Drawing.Color.White;
             this.txtEnterUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEnterUsername.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEnterUsername.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtEnterUsername.Enabled = false;
+            this.txtEnterUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEnterUsername.ForeColor = System.Drawing.Color.Black;
             this.txtEnterUsername.Location = new System.Drawing.Point(279, 134);
             this.txtEnterUsername.Name = "txtEnterUsername";
@@ -189,7 +198,7 @@ namespace _24_21_25_Coursework
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnbackground);
-            this.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DoubleBuffered = true;
             this.Name = "LogIn";
             this.Text = "Form1";

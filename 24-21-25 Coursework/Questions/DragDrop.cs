@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace _24_21_25_Coursework
 {
     public partial class Drag_Drop : Form
     {
-        public static String selectedPicture;
-        bool CheckAwnser = false;
+        public static String selectedPicture;        
         private Image originalPicBoxAImage;
         private Image originalPicBoxBImage;
         private Image originalPicBoxCImage;
@@ -37,7 +37,7 @@ namespace _24_21_25_Coursework
 
         private void Drag_Drop_Load(object sender, EventArgs e)
         {
-            //PicBoxAvatar.Visible = true;
+            
             txtScoreBoard.Text = thisPlayer.Score.ToString();
             PicBoxAvatar.Image = thisPlayer.Avatar;
             originalPicBoxCImage = PicBoxC.Image;
@@ -55,15 +55,17 @@ namespace _24_21_25_Coursework
             PicBoxWrong1.Visible = false;
             PicBoxWrong2.Visible = false;
             PicBoxWrong3.Visible = false;
-            
-        
-            
+            txtHighScore.Text = thisPlayer.HighScore.ToString();
+            txtScoreBoard.Text = "0";
+            thisPlayer.Score = 0;
+
+
 
 
         }
         private void btnCheckDragAwnser_Click(object sender, EventArgs e)
         {
-            CheckAwnser = true;
+            
 
         }
         private void PicBoxA_DragEnter_1(object sender, DragEventArgs e)
@@ -173,7 +175,7 @@ namespace _24_21_25_Coursework
             PicBoxA.AllowDrop = false;
             PicBoxB.AllowDrop = false;
             PicBoxC.AllowDrop = false;
-
+            txtScoreBoard.Text = "";
 
 
             if (AnwserA)
@@ -216,7 +218,7 @@ namespace _24_21_25_Coursework
                 PicBoxWrong3.Visible = true;
             }
 
-
+             UpdateHighScore(thisPlayer);
 
 
 
@@ -224,7 +226,29 @@ namespace _24_21_25_Coursework
 
             btnCheckDragAwnser.Enabled = false;
             txtScoreBoard.Text = thisPlayer.Score.ToString();
+            
         }
+
+      
+
+        public void UpdateHighScore(Player thisPlayer) //updates a users high score attribute and writes it to the players.bin file
+        {
+            List<Player> players = new List<Player>();
+            players.AddRange(FileManager.ReadPlayersToList());
+            if (thisPlayer.Score > thisPlayer.HighScore)  // to change to highscore
+            {
+                foreach (Player player in players)
+                {
+                    if (player.Username == thisPlayer.Username)
+                    {
+                        player.HighScore = thisPlayer.Score;
+                        thisPlayer.HighScore = player.HighScore;
+                        FileManager.WritePlayersFile(players);
+                    }
+                }
+            }
+        }
+
         private void RemoveImageFromOtherBoxes(PictureBox currentPicBox, Image imageToRemove)
         {
             
@@ -268,6 +292,27 @@ namespace _24_21_25_Coursework
             {
                 Application.Exit(); 
             }
+        }
+
+        private void txtHighScore_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRedo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Login = new Drag_Drop(thisPlayer);
+            Login.ShowDialog();
+            this.Close();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form form = new LogIn();
+            form.ShowDialog();
+            this.Close();
         }
     }
 

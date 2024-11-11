@@ -399,7 +399,6 @@ namespace _24_21_25_Coursework
                 
                     
             }
-            return false;
         }
         private void btnImportImage_Click_1(object sender, EventArgs e)
         {
