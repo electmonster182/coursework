@@ -111,7 +111,7 @@ namespace _24_21_25_Coursework
 
                    
                     this.Hide();                    
-                    Form Login = new Drag_Drop(player);
+                    Form Login = new HomePage(player);
                     Login.ShowDialog();  
                     this.Close();  
 

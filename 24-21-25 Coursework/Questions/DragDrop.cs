@@ -23,21 +23,54 @@ namespace _24_21_25_Coursework
         
         public Player thisPlayer { get; set; }
         //List<Player> players = new List<Player>();
-
+        private Timer questionTimer;
+        private int timeRemaining;
 
         public Drag_Drop(Player player)
         {
             InitializeComponent();
-             thisPlayer = player;
+            thisPlayer = player;
             this.FormBorderStyle = FormBorderStyle.None;
-            
         }
-        
-      
 
+        private void StartNewQuestion()
+        {
+            timeRemaining = 30; // Start countdown from 30 seconds
+            questionTimer.Start();
+        }
+        bool timerfinished = false;
+        private void QuestionTimer_Tick(object sender, EventArgs e)
+        {
+            timeRemaining--;
+
+            // Update the timer display (optional text box or label)
+            txtTimer.Text = timeRemaining.ToString();
+
+            if (timeRemaining <= 0)
+            {
+                questionTimer.Stop();
+                MessageBox.Show("Time's up!");
+                btnCheckDragAwnser_Click_1(null, null); // Trigger answer check
+                timerfinished = true;
+            }
+        }
         private void Drag_Drop_Load(object sender, EventArgs e)
         {
-            
+            questionTimer = new Timer();
+            questionTimer.Interval = 1000; // 1 second
+            questionTimer.Tick += QuestionTimer_Tick;
+            if(timerfinished == false)
+            StartNewQuestion();
+            txtHelp.Visible = false;
+            txtHighScore.Visible = true;
+            txtHighScoreText.Visible = true;
+            txtScoreBoard.Visible = true;
+            your_score.Visible = true;
+            PicBoxAvatar.Visible = true;
+            txtUsername.Visible = true;
+            txtUsernameText.Visible = true;
+            txtTimer.Visible = true;
+            txtUsername.Text = thisPlayer.Username;
             txtScoreBoard.Text = thisPlayer.Score.ToString();
             PicBoxAvatar.Image = thisPlayer.Avatar;
             originalPicBoxCImage = PicBoxC.Image;
@@ -58,10 +91,6 @@ namespace _24_21_25_Coursework
             txtHighScore.Text = thisPlayer.HighScore.ToString();
             txtScoreBoard.Text = "0";
             thisPlayer.Score = 0;
-
-
-
-
         }
         private void btnCheckDragAwnser_Click(object sender, EventArgs e)
         {
@@ -85,17 +114,20 @@ namespace _24_21_25_Coursework
         {
             selectedPicture = PicBox1.Tag.ToString();
             PicBox1.DoDragDrop(PicBox1.Image, DragDropEffects.Copy);
+            
         }
         private void PicBox2_MouseDown_1(object sender, MouseEventArgs e)
         {           
-                selectedPicture = PicBox2.Tag.ToString();
-                PicBox2.DoDragDrop(PicBox2.Image, DragDropEffects.Copy);            
+            selectedPicture = PicBox2.Tag.ToString();
+            PicBox2.DoDragDrop(PicBox2.Image, DragDropEffects.Copy);
+           
         }
 
         private void PicBox3_MouseDown_1(object sender, MouseEventArgs e)
         {
             selectedPicture = PicBox3.Tag.ToString();
             PicBox3.DoDragDrop(PicBox3.Image, DragDropEffects.Copy);
+           
         }
         bool AnwserA = false;
         bool AnwserB = false;
@@ -143,7 +175,7 @@ namespace _24_21_25_Coursework
             }
 
         }
-
+     
         private void PicBoxC_DragDrop(object sender, DragEventArgs e)
         {
                     
@@ -170,66 +202,63 @@ namespace _24_21_25_Coursework
      
 
         private void btnCheckDragAwnser_Click_1(object sender, EventArgs e)
-        {
-           
+        {          
             PicBoxA.AllowDrop = false;
             PicBoxB.AllowDrop = false;
             PicBoxC.AllowDrop = false;
             txtScoreBoard.Text = "";
-
+            questionTimer.Stop();
+            questionTimer.Stop(); // Stop countdown
+            int timeBonus = CalculateTimeBonus(timeRemaining);
 
             if (AnwserA)
             {
                 PicBoxCheck1.Visible = true;
-
-                thisPlayer.Score++;
-
+                thisPlayer.Score += 1 + timeBonus;
             }
             else
             {
-
                 PicBoxWrong1.Visible = true;
-
             }
-
 
             if (AnwserB)
             {
                 PicBoxCheck2.Visible = true;
-
-                thisPlayer.Score++;
+                thisPlayer.Score += 1 + timeBonus;
             }
             else
             {
-
                 PicBoxWrong2.Visible = true;
             }
-
 
             if (AnwserC)
             {
                 PicBoxCheck3.Visible = true;
-
-                thisPlayer.Score++;
+                thisPlayer.Score += 1 + timeBonus;
             }
             else
             {
-
                 PicBoxWrong3.Visible = true;
             }
 
-             UpdateHighScore(thisPlayer);
+            UpdateHighScore(thisPlayer);
 
-
-
-
+            btnCheckDragAwnser.Enabled = false;
+            txtScoreBoard.Text = thisPlayer.Score.ToString();
+            
 
             btnCheckDragAwnser.Enabled = false;
             txtScoreBoard.Text = thisPlayer.Score.ToString();
             
         }
+        private int CalculateTimeBonus(int timeLeft)
+        {
+            if (timeLeft > 20) return 5;
+            if (timeLeft > 10) return 3;
+            if (timeLeft > 0) return 1;
+            return 0;
+        }
 
-      
 
         public void UpdateHighScore(Player thisPlayer) //updates a users high score attribute and writes it to the players.bin file
         {
@@ -310,9 +339,75 @@ namespace _24_21_25_Coursework
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form form = new LogIn();
+            Form form = new HomePage(thisPlayer);
             form.ShowDialog();
             this.Close();
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            
+            txtHelp.Visible = true;
+            txtHighScore.Visible = false;
+            txtHighScoreText.Visible = false;
+            txtScoreBoard.Visible = false;
+            your_score.Visible = false;
+            PicBoxAvatar.Visible = false;
+            txtUsername.Visible = false;
+            txtUsernameText.Visible = false;
+            txtTimer.Visible = false;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Drag_Drop_MouseHover(object sender, EventArgs e)
+        {
+            HelpReset();
+        }
+
+        private void HelpReset()
+        {
+            txtHelp.Visible = false;
+            txtHighScore.Visible = true;
+            txtHighScoreText.Visible = true;
+            txtScoreBoard.Visible = true;
+            your_score.Visible = true;
+            PicBoxAvatar.Visible = true;
+            txtUsername.Visible = true;
+            txtUsernameText.Visible = true;
+        }
+
+        private void PicBoxA_MouseHover(object sender, EventArgs e)
+        {
+            HelpReset();
+        }
+
+        private void PicBoxB_MouseHover(object sender, EventArgs e)
+        {
+            HelpReset();
+        }
+
+        private void QuestionTime_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PicBox1_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void PicBox2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void PicBox3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 

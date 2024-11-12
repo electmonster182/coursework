@@ -16,6 +16,7 @@ namespace _24_21_25_Coursework
         public HomePage(Player player)
         {
             InitializeComponent();
+            thisplayer = player;
         }
 
         private void btnExit_Click(object sender, EventArgs e)

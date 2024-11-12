@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Drag_Drop));
             this.btnCheckDragAwnser = new System.Windows.Forms.Button();
             this.txtScoreBoard = new System.Windows.Forms.TextBox();
             this.your_score = new System.Windows.Forms.TextBox();
@@ -49,6 +51,12 @@
             this.txtHighScoreText = new System.Windows.Forms.TextBox();
             this.txtHighScore = new System.Windows.Forms.TextBox();
             this.btnRedo = new System.Windows.Forms.Button();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtUsernameText = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtHelp = new System.Windows.Forms.TextBox();
+            this.QuestionTime = new System.Windows.Forms.Timer(this.components);
+            this.txtTimer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxWrong1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxWrong2)).BeginInit();
@@ -62,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCheckDragAwnser
@@ -105,7 +114,6 @@
             // btnHome
             // 
             this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHome.Enabled = false;
             this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.Location = new System.Drawing.Point(0, 1);
             this.btnHome.Name = "btnHome";
@@ -132,7 +140,7 @@
             this.PicBoxAvatar.Location = new System.Drawing.Point(732, 2);
             this.PicBoxAvatar.Margin = new System.Windows.Forms.Padding(2);
             this.PicBoxAvatar.Name = "PicBoxAvatar";
-            this.PicBoxAvatar.Size = new System.Drawing.Size(67, 65);
+            this.PicBoxAvatar.Size = new System.Drawing.Size(67, 58);
             this.PicBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicBoxAvatar.TabIndex = 26;
             this.PicBoxAvatar.TabStop = false;
@@ -224,6 +232,7 @@
             this.PicBoxB.Tag = "BacteriaCell";
             this.PicBoxB.DragDrop += new System.Windows.Forms.DragEventHandler(this.PicBoxB_DragDrop_1);
             this.PicBoxB.DragEnter += new System.Windows.Forms.DragEventHandler(this.PicBoxB_DragEnter_1);
+            this.PicBoxB.MouseHover += new System.EventHandler(this.PicBoxB_MouseHover);
             // 
             // PicBoxA
             // 
@@ -237,6 +246,7 @@
             this.PicBoxA.Tag = "PlantCell";
             this.PicBoxA.DragDrop += new System.Windows.Forms.DragEventHandler(this.PicBoxA_DragDrop);
             this.PicBoxA.DragEnter += new System.Windows.Forms.DragEventHandler(this.PicBoxA_DragEnter_1);
+            this.PicBoxA.MouseHover += new System.EventHandler(this.PicBoxA_MouseHover);
             // 
             // PicBox3
             // 
@@ -249,6 +259,7 @@
             this.PicBox3.TabIndex = 15;
             this.PicBox3.TabStop = false;
             this.PicBox3.Tag = "BacteriaCell";
+            this.PicBox3.Click += new System.EventHandler(this.PicBox3_Click);
             this.PicBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PicBox3_MouseDown_1);
             // 
             // PicBox2
@@ -263,6 +274,7 @@
             this.PicBox2.TabIndex = 14;
             this.PicBox2.TabStop = false;
             this.PicBox2.Tag = "PlantCell";
+            this.PicBox2.Click += new System.EventHandler(this.PicBox2_Click);
             this.PicBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PicBox2_MouseDown_1);
             // 
             // PicBox1
@@ -276,6 +288,7 @@
             this.PicBox1.TabIndex = 13;
             this.PicBox1.TabStop = false;
             this.PicBox1.Tag = "AnimalCell";
+            this.PicBox1.Click += new System.EventHandler(this.PicBox1_Click);
             this.PicBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PicBox1_MouseDown);
             // 
             // txtHighScoreText
@@ -284,10 +297,10 @@
             this.txtHighScoreText.Enabled = false;
             this.txtHighScoreText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHighScoreText.ForeColor = System.Drawing.Color.Black;
-            this.txtHighScoreText.Location = new System.Drawing.Point(573, 34);
+            this.txtHighScoreText.Location = new System.Drawing.Point(574, 34);
             this.txtHighScoreText.Margin = new System.Windows.Forms.Padding(2);
             this.txtHighScoreText.Name = "txtHighScoreText";
-            this.txtHighScoreText.Size = new System.Drawing.Size(85, 26);
+            this.txtHighScoreText.Size = new System.Drawing.Size(84, 26);
             this.txtHighScoreText.TabIndex = 32;
             this.txtHighScoreText.Text = "High Score";
             // 
@@ -316,11 +329,83 @@
             this.btnRedo.UseVisualStyleBackColor = true;
             this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
+            // txtUsername
+            // 
+            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsername.Enabled = false;
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.ForeColor = System.Drawing.Color.Black;
+            this.txtUsername.Location = new System.Drawing.Point(661, 64);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(138, 26);
+            this.txtUsername.TabIndex = 34;
+            // 
+            // txtUsernameText
+            // 
+            this.txtUsernameText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsernameText.Enabled = false;
+            this.txtUsernameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsernameText.ForeColor = System.Drawing.Color.Black;
+            this.txtUsernameText.Location = new System.Drawing.Point(574, 64);
+            this.txtUsernameText.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUsernameText.Name = "txtUsernameText";
+            this.txtUsernameText.Size = new System.Drawing.Size(84, 26);
+            this.txtUsernameText.TabIndex = 35;
+            this.txtUsernameText.Text = "Username";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::_24_21_25_Coursework.Properties.Resources.Question_mark;
+            this.pictureBox1.Location = new System.Drawing.Point(574, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+            // 
+            // txtHelp
+            // 
+            this.txtHelp.BackColor = System.Drawing.Color.White;
+            this.txtHelp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHelp.Enabled = false;
+            this.txtHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHelp.ForeColor = System.Drawing.Color.Red;
+            this.txtHelp.Location = new System.Drawing.Point(607, 2);
+            this.txtHelp.Multiline = true;
+            this.txtHelp.Name = "txtHelp";
+            this.txtHelp.ReadOnly = true;
+            this.txtHelp.Size = new System.Drawing.Size(192, 192);
+            this.txtHelp.TabIndex = 38;
+            this.txtHelp.Text = resources.GetString("txtHelp.Text");
+            // 
+            // QuestionTime
+            // 
+            this.QuestionTime.Tick += new System.EventHandler(this.QuestionTime_Tick);
+            // 
+            // txtTimer
+            // 
+            this.txtTimer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTimer.Enabled = false;
+            this.txtTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimer.ForeColor = System.Drawing.Color.Black;
+            this.txtTimer.Location = new System.Drawing.Point(573, 94);
+            this.txtTimer.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTimer.Name = "txtTimer";
+            this.txtTimer.Size = new System.Drawing.Size(84, 26);
+            this.txtTimer.TabIndex = 39;
+            // 
             // Drag_Drop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtTimer);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.txtUsernameText);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnRedo);
             this.Controls.Add(this.txtHighScoreText);
             this.Controls.Add(this.txtHighScore);
@@ -342,10 +427,12 @@
             this.Controls.Add(this.PicBox3);
             this.Controls.Add(this.PicBox2);
             this.Controls.Add(this.PicBox1);
+            this.Controls.Add(this.txtHelp);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Drag_Drop";
             this.Text = "Drag_Drop";
             this.Load += new System.EventHandler(this.Drag_Drop_Load);
+            this.MouseHover += new System.EventHandler(this.Drag_Drop_MouseHover);
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxWrong1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxWrong2)).EndInit();
@@ -359,6 +446,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,5 +475,11 @@
         private System.Windows.Forms.TextBox txtHighScoreText;
         private System.Windows.Forms.TextBox txtHighScore;
         private System.Windows.Forms.Button btnRedo;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtUsernameText;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtHelp;
+        private System.Windows.Forms.Timer QuestionTime;
+        private System.Windows.Forms.TextBox txtTimer;
     }
 }
