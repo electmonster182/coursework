@@ -48,5 +48,29 @@ namespace _24_21_25_Coursework
             form.ShowDialog();
             this.Close();
         }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form form = new Settings(thisplayer);
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnAdminSettings_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form form = new AdminCreateQuestion(thisplayer);
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnRandomQuestion_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form form = new Random_Question(thisplayer);
+            form.ShowDialog();
+            this.Close();
+        }
     }
 }

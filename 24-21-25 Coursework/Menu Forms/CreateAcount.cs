@@ -514,5 +514,10 @@ namespace _24_21_25_Coursework
                 Application.Exit();
             }
         }
+
+        private void btnBackGround_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

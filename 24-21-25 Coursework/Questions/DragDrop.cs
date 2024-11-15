@@ -331,8 +331,8 @@ namespace _24_21_25_Coursework
         private void btnRedo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form Login = new Drag_Drop(thisPlayer);
-            Login.ShowDialog();
+            Form Home = new Drag_Drop(thisPlayer);
+            Home.ShowDialog();
             this.Close();
         }
 

@@ -134,7 +134,6 @@ namespace _24_21_25_Coursework
             // 
             this.txtUsername2Verify.BackColor = System.Drawing.Color.White;
             this.txtUsername2Verify.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUsername2Verify.Enabled = false;
             this.txtUsername2Verify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername2Verify.ForeColor = System.Drawing.Color.Red;
             this.txtUsername2Verify.Location = new System.Drawing.Point(198, 112);
@@ -147,7 +146,6 @@ namespace _24_21_25_Coursework
             // 
             this.txtPassword2Verify.BackColor = System.Drawing.Color.White;
             this.txtPassword2Verify.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword2Verify.Enabled = false;
             this.txtPassword2Verify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword2Verify.ForeColor = System.Drawing.Color.Red;
             this.txtPassword2Verify.Location = new System.Drawing.Point(198, 282);
@@ -366,6 +364,7 @@ namespace _24_21_25_Coursework
             this.btnBackGround.Size = new System.Drawing.Size(624, 387);
             this.btnBackGround.TabIndex = 80;
             this.btnBackGround.UseVisualStyleBackColor = false;
+            this.btnBackGround.Click += new System.EventHandler(this.btnBackGround_Click);
             // 
             // CreateAcount
             // 

@@ -153,7 +153,7 @@ namespace _24_21_25_Coursework
             this.txtEnterPassword.ReadOnly = true;
             this.txtEnterPassword.Size = new System.Drawing.Size(200, 19);
             this.txtEnterPassword.TabIndex = 22;
-            this.txtEnterPassword.Text = "Enter Username";
+            this.txtEnterPassword.Text = "Enter Password";
             this.txtEnterPassword.TextChanged += new System.EventHandler(this.txtEnterPassword_TextChanged);
             // 
             // txtEnterUsername
@@ -169,7 +169,7 @@ namespace _24_21_25_Coursework
             this.txtEnterUsername.ReadOnly = true;
             this.txtEnterUsername.Size = new System.Drawing.Size(200, 19);
             this.txtEnterUsername.TabIndex = 23;
-            this.txtEnterUsername.Text = "Enter Password";
+            this.txtEnterUsername.Text = "Enter Username";
             // 
             // btnbackground
             // 

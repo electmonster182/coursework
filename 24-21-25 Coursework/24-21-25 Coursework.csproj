@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminCreateQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCreateQuestion.Designer.cs">
+      <DependentUpon>AdminCreateQuestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileManager.cs" />
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>
@@ -59,6 +65,7 @@
     <Compile Include="Menu Forms\CreateAcount.Designer.cs">
       <DependentUpon>CreateAcount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Questions.cs" />
     <Compile Include="Questions\DragDrop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +87,21 @@
     <Compile Include="Question Template.Designer.cs">
       <DependentUpon>Question Template.cs</DependentUpon>
     </Compile>
+    <Compile Include="Random Question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Random Question.Designer.cs">
+      <DependentUpon>Random Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminCreateQuestion.resx">
+      <DependentUpon>AdminCreateQuestion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +126,12 @@
     </Compile>
     <EmbeddedResource Include="Question Template.resx">
       <DependentUpon>Question Template.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Random Question.resx">
+      <DependentUpon>Random Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
