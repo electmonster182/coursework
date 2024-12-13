@@ -19,7 +19,11 @@ namespace _24_21_25_Coursework
         Image avatar;
         int score;
         int highscore;
-
+        bool firstLog;
+        bool stopMessage;
+        int progression;
+        bool admin;
+        bool superadmin;
         public Player()
         {
             username = "";
@@ -27,17 +31,50 @@ namespace _24_21_25_Coursework
             avatar = null;
             score = 0;
             highscore = 0;
+            firstLog = false;
+            stopMessage = false;
+            progression = 0;
+            admin = false;
+            superadmin = false;
         }
 
-        public Player(string username, string password, Image avatar,int score,int highscore)
+        public Player(string username, string password, Image avatar,int score,int highscore,bool firstLog,bool stopMessage,int progression,bool admin,bool superadmin)
         {
             Username = username;
             Password = password;
             Avatar = avatar;
             HighScore = highscore;
+            FirstLog = firstLog;
+            StopMessage = stopMessage;
+            Progression = progression;
+            Admin = admin;
+            SuperAdmin = superadmin;
         }
-
-       
+        public bool SuperAdmin
+        {
+            get { return superadmin; } // Use the private field
+            set { superadmin = value; } // Set the private field
+        }
+        public bool Admin
+        {
+            get { return admin; } // Use the private field
+            set { admin = value; } // Set the private field
+        }
+        public int Progression // this is for if then want to continue where they left off
+        {
+            get { return progression; }
+            set { progression = value; }
+        }
+        public bool StopMessage // stops the message from happening everytime you go home
+        {
+            get { return stopMessage; }
+            set { stopMessage = value; }
+        }
+        public bool FirstLog // if it is their first time logging in then you will get a intruduction message else you get welcome back message
+        {
+            get { return firstLog; }
+            set { firstLog = value; }
+        }
         public string Username
         {
             get { return username; }

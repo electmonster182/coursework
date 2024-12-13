@@ -46,12 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileManager.cs" />
-    <Compile Include="HomePage.cs">
+    <Compile Include="AdminCreateQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HomePage.Designer.cs">
-      <DependentUpon>HomePage.cs</DependentUpon>
+    <Compile Include="AdminCreateQuestion.Designer.cs">
+      <DependentUpon>AdminCreateQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Avatar.cs" />
+    <Compile Include="ComboBoxQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComboBoxQuestion.Designer.cs">
+      <DependentUpon>ComboBoxQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileManager.cs" />
+    <Compile Include="LeaderBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaderBoard.Designer.cs">
+      <DependentUpon>LeaderBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu Forms\CreateAcount.cs">
       <SubType>Form</SubType>
@@ -59,6 +72,13 @@
     <Compile Include="Menu Forms\CreateAcount.Designer.cs">
       <DependentUpon>CreateAcount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu Forms\LoadingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu Forms\LoadingScreen.Designer.cs">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Questions.cs" />
     <Compile Include="Questions\DragDrop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,17 +94,44 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question Template.cs">
+    <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Question Template.Designer.cs">
-      <DependentUpon>Question Template.cs</DependentUpon>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="HomePage.resx">
-      <DependentUpon>HomePage.cs</DependentUpon>
+    <Compile Include="RadioButtonQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RadioButtonQuestion.Designer.cs">
+      <DependentUpon>RadioButtonQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Random Question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Random Question.Designer.cs">
+      <DependentUpon>Random Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminCreateQuestion.resx">
+      <DependentUpon>AdminCreateQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComboBoxQuestion.resx">
+      <DependentUpon>ComboBoxQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaderBoard.resx">
+      <DependentUpon>LeaderBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu Forms\CreateAcount.resx">
       <DependentUpon>CreateAcount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu Forms\LoadingScreen.resx">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Questions\DragDrop.resx">
       <DependentUpon>DragDrop.cs</DependentUpon>
@@ -102,8 +149,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Question Template.resx">
-      <DependentUpon>Question Template.cs</DependentUpon>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RadioButtonQuestion.resx">
+      <DependentUpon>RadioButtonQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Random Question.resx">
+      <DependentUpon>Random Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,6 +194,105 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\back ground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamboghini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nissan gtr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\r8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ferrari-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lamborghini Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lamborghini Logo11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lamborghini Logo12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Final Lambo Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Porche Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bugatti .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VOLKSWAGEN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\honda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VOLKSWAGEN1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\honda1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmw1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vw logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\honda logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmw logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmw logo 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MUstang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question mark ff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\BackGround Video.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -20,12 +21,23 @@ namespace _24_21_25_Coursework
         bool PasswordValid = false;
         
         Player thisPlayer = new Player();
-        List<Player> players = new List<Player>(); 
+        List<Player> players = new List<Player>();
+        bool CreateButtonClick = false;
+
+        bool Rightclicked1 = true;
+        bool Rightclicked2 = false;
+        bool Rightclicked3 = false;
+        bool Rightclicked4 = false;
+
+        bool Avatar1 = false;
+        bool Avatar2 = false;
+        bool Avatar3 = false;
+        bool Avatar4 = false;
         public CreateAcount()
         {
             InitializeComponent();
             players = readFileToList();
-            this.FormBorderStyle = FormBorderStyle.None;
+           
         }
     
 
@@ -68,37 +80,48 @@ namespace _24_21_25_Coursework
                
                 sw = File.Open("Players.bin", FileMode.Create); 
                 bf.Serialize(sw, players);  
-                sw.Close();  
+                sw.Close();
 
-                
-                this.Hide();
-                Form form = new LogIn();
-                form.ShowDialog();
-                this.Close();
+               
+
             }
             catch (SerializationException ex)
             {
                 MessageBox.Show(ex.Message); 
             }
+
+            
         }
 
-       
-       
 
+
+       
         private void btnCreateAcount_Click(object sender, EventArgs e)
         {
 
             
-          
-            HasAvatar = Avatarselection(); 
-            if (PasswordValid == true && UsernameValid == true && txtPassword2.Text == txtConfirmPassword.Text && HasAvatar == true)
+            CreateButtonClick = true;
+            if (txtPassword2.Text == "admin" && UsernameValid == true)
             {
-                CreateAcountMessage();
-                SetAvatar();
-                CreateAccountAsBin();               
+                btnCreateAcount.Enabled = true;
+                CreateAccountAsBin();
             }
-            else CreateAcountMessage();
-
+            if (PasswordValid == true && UsernameValid == true && txtPassword2.Text == txtConfirmPassword.Text)
+            {
+                btnCreateAcount.Enabled = true;
+                
+                SetAvatar();
+                CreateAccountAsBin();
+                List<Player> players = readFileToList();
+                foreach (Player player in players)
+                {
+                  this.Hide();
+                  Form Login = new Menu(thisPlayer);
+                  Login.ShowDialog();
+                  this.Close();
+                }
+            }
+            
         }
      
 
@@ -107,6 +130,19 @@ namespace _24_21_25_Coursework
             
             string Username = txtUsername2.Text.Trim().ToLower();
             UsernameValid = UsernameValidation(Username);
+
+
+            if (txtPassword2.Text == "admin" && UsernameValid == true)
+            {
+                btnCreateAcount.Enabled = true;
+                
+            }
+            else if (PasswordValid == true && UsernameValid == true && txtPassword2.Text == txtConfirmPassword.Text)
+            {
+                btnCreateAcount.Enabled = true;
+            }
+            else
+                btnCreateAcount.Enabled = false;
         }
 
         
@@ -123,6 +159,15 @@ namespace _24_21_25_Coursework
             if (btnShowpassword.Checked)
             {
                 btnShowpassword.Checked = false;
+            }
+            if (txtPassword2.Text == "admin" && UsernameValid == true)
+            {
+                btnCreateAcount.Enabled = true;
+
+            }
+            else if (PasswordValid == true && UsernameValid == true && txtPassword2.Text == txtConfirmPassword.Text)
+            {
+                btnCreateAcount.Enabled = true;
             }
         }
 
@@ -170,22 +215,22 @@ namespace _24_21_25_Coursework
                 }
             }
             
-            if (Length && CountainsUpper && ContainsNumber && ContainsSpecChar)
+            if(Length == true)
             {
-                txtPassword2Verify.ForeColor = Color.Green;
-                txtPassword2Verify.Text = "Password valid.";
-                return true;
+                lblPasswordLength.Visible = false;
+                
             }
-            else
+            if(CountainsUpper == true && ContainsNumber == true && ContainsSpecChar == true)
             {
-                txtPassword2Verify.ForeColor = Color.Red;
-                txtPassword2Verify.Text = "Password must contain";
-                txtPassword2Verify.Text += Length == false ? "  between 5 and 30 characters long" : "";
-                txtPassword2Verify.Text += CountainsUpper == false ? ", upper case letter" : "";
-                txtPassword2Verify.Text += ContainsNumber == false ? " number" : "";
-                txtPassword2Verify.Text += ContainsSpecChar == false ? " special character" : "";
+                lblCharecter.Visible = false;
+                
+            }
+            if(CountainsUpper == false || ContainsNumber == false || ContainsSpecChar == false || Length == false)
                 return false;
-            }
+            else if (CountainsUpper == true || ContainsNumber == true || ContainsSpecChar == true || Length == true)
+                return true;
+
+            return false;
         }
 
 
@@ -206,10 +251,17 @@ namespace _24_21_25_Coursework
                     UsernameInUse = false; 
                 }
             }
-           if (UsernameInUse == false)
+            if (Username == "")
+            {
+                txtUsername2Verify.ForeColor = Color.Red;
+                txtUsername2Verify.Text = "Username too short";
+                return false;
+            }
+            if (UsernameInUse == false)
             {
                 txtUsername2Verify.ForeColor = Color.Red;
                 txtUsername2Verify.Text = "Username already in use";
+                return false;
             }
             else if (Username.Length < 3)
             {
@@ -236,12 +288,28 @@ namespace _24_21_25_Coursework
 
         private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
         {
+            if(txtConfirmPassword.Text == txtPassword2.Text )
+            {
+                lblPasswordSame.Visible = false;
+            }
             txtPassword2.UseSystemPasswordChar = true;
             txtConfirmPassword.UseSystemPasswordChar = true;
             if (btnShowpassword.Checked)
             {
                 btnShowpassword.Checked = false;
             }
+
+            if (txtPassword2.Text == "admin" && UsernameValid == true)
+            {
+                btnCreateAcount.Enabled = true;
+
+            }
+            else if (PasswordValid == true && UsernameValid == true && txtPassword2.Text == txtConfirmPassword.Text)
+            {
+                btnCreateAcount.Enabled = true;
+            }
+            else
+                btnCreateAcount.Enabled = false;
         }
 
         private void btnShowpassword_CheckedChanged(object sender, EventArgs e)
@@ -270,7 +338,7 @@ namespace _24_21_25_Coursework
             {
                 if (UsernameValid == false && PasswordValid == false)
                 {
-                    MessageBox.Show("Please Ensureassword and username are valid.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please Ensure password and username are valid.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     PasswordValid = false;
                 }
                 else if (PasswordValid == false)
@@ -285,10 +353,7 @@ namespace _24_21_25_Coursework
                 }
 
             }
-            else if (HasAvatar == false)
-            {
-                MessageBox.Show("Please choose an avatar.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
 
             else
             {
@@ -309,202 +374,60 @@ namespace _24_21_25_Coursework
         }
 
       
-        bool HasAvatar = false;
+        
         private void CreateAcount_Load(object sender, EventArgs e)
         {
+            // Get the current screen resolution
+            Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
 
-            HasAvatar = Avatarselection();           
-            PNGborder1.Visible = false;
-            PNGborder2.Visible = false;
-            PNGborder3.Visible = false;
-            PNGborder4.Visible = false;
-            PGNborder5.Visible = false;
+            // Resize the form to a percentage of the screen size
+            this.Width = (int)(screenBounds.Width * 0.57);
+            this.Height = (int)(screenBounds.Height * 0.54);
+
+            PicBoxAvatar1.Visible = true;
+            PicBoxAvatar2.Visible = false;
+            PicBoxAvatar3.Visible = false;
+            PicBoxAvatar4.Visible = false;
+            ResetStats();
+            btnLamboTest1Acceleration.Visible = true;
+            btnLamboTest1Control.Visible = true;
+            btnLamboTest1Speed.Visible = true;
+            thisPlayer.Avatar = PicBoxAvatar1.Image;
         }
-
-
-      
-
-        
+     
        private void SetAvatar()
         {
-            if (PNGborder1.Visible)
+            
+            if (Avatar1)
             {
                 thisPlayer.Avatar = PicBoxAvatar1.Image;
-               
+
 
             }
-            else if (PNGborder2.Visible)
+            else if (Avatar2)
             {
                 thisPlayer.Avatar = PicBoxAvatar2.Image;
-                
+
 
             }
-            else if (PNGborder3.Visible)
+            else if (Avatar3)
 
             {
                 thisPlayer.Avatar = PicBoxAvatar3.Image;
-                
+
 
             }
-            else if (PNGborder4.Visible)
+            else if (Avatar4)
 
             {
                 thisPlayer.Avatar = PicBoxAvatar4.Image;
-               
-            }
-            else if (PGNborder5.Visible)
 
-            {
-                thisPlayer.Avatar = btnImportImage.Image;
-               
-            }
-        }
-        private bool Avatarselection()
-        {
-            if (PNGborder1.Visible)             
-            {
-                
-                return true;
-               
-            }
-            else if (PNGborder2.Visible)               
-            {
-                
-                return true;
-               
-            }
-            else if (PNGborder3.Visible)
-               
-            {
-               
-                return true;
-               
-            }
-            else if (PNGborder4.Visible)
-               
-            {
-              
-                return true;
-            }
-            else if (PGNborder5.Visible)
-              
-            {
-               
-                return true;
-            }
-            else
-            {
-                
-                return false;
-                
-                    
-            }
-        }
-        private void btnImportImage_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog fileOpen = new OpenFileDialog();
-                fileOpen.Title = "Open a PGN image file";
-                fileOpen.Filter = "PGN Files (*.PGN)| *.PGN";
-
-                if (fileOpen.ShowDialog() == DialogResult.OK)
-                {
-                    btnImportImage.Image = Image.FromFile(fileOpen.FileName);
-                }
-                fileOpen.Dispose();
-
-                if (btnImportImage.Image != null)
-                {
-                    thisPlayer.Avatar = thisPlayer.Avatar;
-                }
-                readFileToList();
-                foreach (Player player in players)
-                {
-                    if (player.Username == thisPlayer.Username)
-                    {
-
-                        Stream sw;
-                        BinaryFormatter bf = new BinaryFormatter();
-                        player.Avatar = thisPlayer.Avatar;
-                        try
-                        {
-                            sw = File.OpenWrite("Players.bin");
-                            bf.Serialize(sw, players);
-                            sw.Close();
-                        }
-                        catch (SerializationException ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        readFileToList();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
             }
             
-            PNGborder1.Visible = false;
-            PNGborder2.Visible = false;
-            PNGborder3.Visible = false;
-            PNGborder4.Visible = false;
-            PGNborder5.Visible = true;
         }
-        private void readPlayersToList2()
-        {
-            Stream sr;
-            BinaryFormatter bf = new BinaryFormatter();
-            try
-            {
-                sr = File.OpenRead("Players.bin");
-                players = (List<Player>)bf.Deserialize(sr);
-                sr.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void PicBoxAvatar1_Click(object sender, EventArgs e)
-        {
-            
-           
-            PNGborder1.Visible = true;
-            PNGborder2.Visible = false;
-            PNGborder3.Visible = false;
-            PNGborder4.Visible = false;
-            PGNborder5.Visible = false;
-        }
-
-        private void PicBoxAvatar2_Click(object sender, EventArgs e)
-        {
-            PNGborder1.Visible = false;
-            PNGborder2.Visible = true;
-            PNGborder3.Visible = false;
-            PNGborder4.Visible = false;
-            PGNborder5.Visible = false;
-        }
-
-        private void PicBoxAvatar3_Click(object sender, EventArgs e)
-        {
-            PNGborder1.Visible = false;
-            PNGborder2.Visible = false;
-            PNGborder3.Visible = true;
-            PNGborder4.Visible = false;
-            PGNborder5.Visible = false;
-        }
-
-        private void PicBoxAvatar4_Click(object sender, EventArgs e)
-        {
-            PNGborder1.Visible = false;
-            PNGborder2.Visible = false;
-            PNGborder3.Visible = false;
-            PNGborder4.Visible = true;
-            PGNborder5.Visible = false;
-        }
+        
+        
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -514,5 +437,198 @@ namespace _24_21_25_Coursework
                 Application.Exit();
             }
         }
+
+        private void btnRightCar_Click(object sender, EventArgs e)
+        {
+            do
+            {
+
+                if (Rightclicked1)
+                {
+                    ResetStats();
+                    PicBoxAvatar4.Visible = false;
+                    PicBoxAvatar1.Visible = true;
+                   
+                    Rightclicked2 = true;
+                    Rightclicked1 = false;
+
+                    Avatar1 = true;
+                    Avatar2 = false;
+                    Avatar3 = false;
+                    Avatar4 = false;
+                    txtCarName.Text = "Lamborghini Aventador";
+                    btnLamboTest1Acceleration.Visible = true;
+                    btnLamboTest1Control.Visible = true;
+                    btnLamboTest1Speed.Visible = true;
+                    return;
+                    
+                }
+                if (Rightclicked2)
+                {
+                    ResetStats();
+                    Rightclicked2 = false;
+                    PicBoxAvatar1.Visible = false;
+                    PicBoxAvatar2.Visible = true;
+                  
+                    Rightclicked3 = true;
+
+                    Avatar1 = false;
+                    Avatar2 = true;
+                    Avatar3 = false;   
+                    Avatar4 = false;
+                    txtCarName.Text = "   BMW M5";
+                    btnBMWAcceleration.Visible = true;  
+                    btnBMWControl.Visible = true;   
+                    btnBMWTopSpeed.Visible = true;
+                    return;
+                    
+                }
+                if (Rightclicked3)
+                {
+                    ResetStats();
+                    PicBoxAvatar2.Visible = false;
+                    PicBoxAvatar3.Visible = true;
+                
+                    Rightclicked4 = true;
+                    Rightclicked3 = false;
+
+                    Avatar3 = true;
+                    Avatar1 = false;
+                    Avatar2 = false;
+                    Avatar4 = false;
+                    txtCarName.Text = "    Nissan GTR";
+                    btnGTRAcceleration.Visible = true;
+                    btnGTRControl.Visible = true;
+                    btnGTRSpeed.Visible = true;
+                    return;
+                    
+                 }
+                if (Rightclicked4)
+                {
+                    ResetStats();
+                    PicBoxAvatar3.Visible = false;
+                    PicBoxAvatar4.Visible = true;
+                 
+                    Rightclicked1 = true;
+                    Rightclicked4 = false;
+
+                    Avatar4 = true;
+                    Avatar1 = false;
+                    Avatar2 = false;
+                    Avatar3 = false;
+                    txtCarName.Text = "    Audi R8";
+                    btnAudiAcceleration.Visible = true;
+                    btnAudioTopSpeed.Visible = true;    
+                    btnAudiControl.Visible = true;
+                    return;
+                   
+                }
+            }
+            while (CreateButtonClick);   
+        }
+        public void ResetStats()
+        {
+            btnAudiAcceleration.Visible = false;
+            btnAudioTopSpeed.Visible = false;
+            btnAudiControl.Visible = false;
+
+            btnBMWAcceleration.Visible = false;
+            btnBMWControl.Visible = false;
+            btnBMWTopSpeed.Visible = false;
+
+            btnLamboTest1Acceleration.Visible = false;
+            btnLamboTest1Control.Visible = false;
+            btnLamboTest1Speed.Visible = false;
+
+            btnGTRAcceleration.Visible = false;
+            btnGTRControl.Visible = false;
+            btnGTRSpeed.Visible = false;
+        }
+
+        private void btnLeftCar_Click(object sender, EventArgs e)
+        {
+            do
+            {
+                if (Rightclicked1)  // Moving backward from Avatar1
+                {
+                    ResetStats();
+                    PicBoxAvatar1.Visible = false;
+                    PicBoxAvatar4.Visible = true;
+                    Rightclicked4 = true;
+                    Rightclicked1 = false;
+
+                    Avatar1 = false;
+                    Avatar2 = false;
+                    Avatar3 = false;
+                    Avatar4 = true;
+                    txtCarName.Text = "    Audi R8";
+                    btnAudiAcceleration.Visible = true;
+                    btnAudioTopSpeed.Visible = true;
+                    btnAudiControl.Visible = true;
+                    return;
+                    
+                }
+                if (Rightclicked2)  // Moving backward from Avatar2
+                {
+                    ResetStats();
+                    PicBoxAvatar2.Visible = false;
+                    PicBoxAvatar1.Visible = true;
+                    Rightclicked1 = true;
+                    Rightclicked2 = false;
+
+                    Avatar2 = false;
+                    Avatar1 = true;
+                    Avatar3 = false;
+                    Avatar4 = false;
+                    txtCarName.Text = "Lamborghini Aventador";
+                    btnLamboTest1Acceleration.Visible = true;
+                    btnLamboTest1Control.Visible = true;
+                    btnLamboTest1Speed.Visible = true;
+                    return;
+                    
+                }
+                if (Rightclicked3)  // Moving backward from Avatar3
+                {
+                    ResetStats();
+                    PicBoxAvatar3.Visible = false;
+                    PicBoxAvatar2.Visible = true;
+                    Rightclicked2 = true;
+                    Rightclicked3 = false;
+
+                    Avatar3 = false;
+                    Avatar2 = true;
+                    Avatar1 = false;
+                    Avatar4 = false;
+                    txtCarName.Text = "    BMW M5";
+                    btnBMWAcceleration.Visible = true;
+                    btnBMWControl.Visible = true;
+                    btnBMWTopSpeed.Visible = true;
+                    return;
+                    
+                }
+                if (Rightclicked4)  // Moving backward from Avatar4
+                {
+                    ResetStats();
+                    PicBoxAvatar4.Visible = false;
+                    PicBoxAvatar3.Visible = true;
+                    Rightclicked3 = true;
+                    Rightclicked4 = false;
+
+                    Avatar4 = false;
+                    Avatar3 = true;
+                    Avatar1 = false;
+                    Avatar2 = false;
+                    txtCarName.Text = "    Nissan GTR";
+                    btnGTRAcceleration.Visible = true;
+                    btnGTRControl.Visible = true;
+                    btnGTRSpeed.Visible = true;
+                    return;
+                    
+                }
+            }
+            while (CreateButtonClick);
+        }
+
+       
     }
 }

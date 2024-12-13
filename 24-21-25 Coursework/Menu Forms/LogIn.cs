@@ -18,7 +18,7 @@ namespace _24_21_25_Coursework
     public partial class LogIn : Form
     {
         Player thisPlayer = new Player(); 
-        List<Player> players = new List<Player>();
+        public List<Player> players = new List<Player>();
         
         public LogIn()
         { 
@@ -111,7 +111,7 @@ namespace _24_21_25_Coursework
 
                    
                     this.Hide();                    
-                    Form Login = new HomePage(player);
+                    Form Login = new Menu(player);
                     Login.ShowDialog();  
                     this.Close();  
 
@@ -149,21 +149,25 @@ namespace _24_21_25_Coursework
 
         private void LogIn_Load(object sender, EventArgs e)
         {
-            
-
-            EnsurePlayersFileExists();
-           
-            //btnExit.FlatStyle = FlatStyle.Flat;
-            //btnExit.BackColor = System.Drawing.Color.Transparent;
-
-            //btnEnterPasswordText.FlatStyle = FlatStyle.Flat;
-            //btnEnterPasswordText.BackColor = System.Drawing.Color.Transparent;
-
-            //btnEnterUsernameText.FlatStyle = FlatStyle.Flat;
-            //btnEnterUsernameText.BackColor = System.Drawing.Color.Transparent;
-
+         EnsurePlayersFileExists();
+            EnsureAdminUser();
         }
-
+        private void EnsureAdminUser()
+        {
+            List<Player> players = readFileToList();
+            // Check if an admin player exists
+            if (!players.Any(player => player.Username == "admin"))
+            {
+                Player player = new Player
+                {
+                    Username = "admin",
+                    Password = "admin",
+                    SuperAdmin = true
+                };
+                players.Add(player);
+                FileManager.WritePlayersFile(players);               
+            }
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -173,23 +177,6 @@ namespace _24_21_25_Coursework
             }
         }
 
-        private void txtWriteUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_Click(object sender, EventArgs e)
-        {
-        }
         
-        private void txtPassword_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtEnterPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

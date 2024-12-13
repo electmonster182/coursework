@@ -118,25 +118,109 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="RED X" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\RED X.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Plant Cell" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Plant Cell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="VOLKSWAGEN1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VOLKSWAGEN1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GREEN TICK" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\GREEN TICK.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MUstang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MUstang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Lamborghini Logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lamborghini Logo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tesla dash1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tesla dash1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Question mark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Question mark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Animal cell" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Animal cell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bmw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bacteria cell" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bacteria cell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bugatti " type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bugatti .png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RED X" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\RED X.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Lamborghini Logo11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lamborghini Logo11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Porche Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Porche Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vw logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vw logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="car dash2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\car dash2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ferrari-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ferrari-logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="honda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\honda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\help button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="car dash1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\car dash1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\r8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmw logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmw logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Final Lambo Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Final Lambo Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="honda logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\honda logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamboghini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamboghini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmw1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmw1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="honda1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\honda1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VOLKSWAGEN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VOLKSWAGEN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Lamborghini Logo12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lamborghini Logo12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nissan gtr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nissan gtr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmw logo 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmw logo 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="back ground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\back ground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Animal cell" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Animal cell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Plant Cell" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plant Cell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\x1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="question mark ff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\question mark ff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

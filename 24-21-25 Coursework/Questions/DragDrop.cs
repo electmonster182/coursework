@@ -19,18 +19,18 @@ namespace _24_21_25_Coursework
         private Image originalPicBoxAImage;
         private Image originalPicBoxBImage;
         private Image originalPicBoxCImage;
-        
-        
-        public Player thisPlayer { get; set; }
+
+
+        Player thisPlayer;
         //List<Player> players = new List<Player>();
         private Timer questionTimer;
         private int timeRemaining;
-
+        bool timerfinished = false;
         public Drag_Drop(Player player)
         {
             InitializeComponent();
             thisPlayer = player;
-            this.FormBorderStyle = FormBorderStyle.None;
+            
         }
 
         private void StartNewQuestion()
@@ -38,7 +38,7 @@ namespace _24_21_25_Coursework
             timeRemaining = 30; // Start countdown from 30 seconds
             questionTimer.Start();
         }
-        bool timerfinished = false;
+        
         private void QuestionTimer_Tick(object sender, EventArgs e)
         {
             timeRemaining--;
@@ -46,16 +46,21 @@ namespace _24_21_25_Coursework
             // Update the timer display (optional text box or label)
             txtTimer.Text = timeRemaining.ToString();
 
+            if (timeRemaining <= 5)
+                txtTimer.ForeColor = Color.Red;
+
             if (timeRemaining <= 0)
             {
                 questionTimer.Stop();
                 MessageBox.Show("Time's up!");
                 btnCheckDragAwnser_Click_1(null, null); // Trigger answer check
                 timerfinished = true;
+                AnswerCheck();
             }
         }
         private void Drag_Drop_Load(object sender, EventArgs e)
         {
+            
             questionTimer = new Timer();
             questionTimer.Interval = 1000; // 1 second
             questionTimer.Tick += QuestionTimer_Tick;
@@ -72,7 +77,10 @@ namespace _24_21_25_Coursework
             txtTimer.Visible = true;
             txtUsername.Text = thisPlayer.Username;
             txtScoreBoard.Text = thisPlayer.Score.ToString();
+            txtHighScore.Text = thisPlayer.HighScore.ToString();
             PicBoxAvatar.Image = thisPlayer.Avatar;
+
+
             originalPicBoxCImage = PicBoxC.Image;
             originalPicBoxAImage = PicBoxA.Image;
             originalPicBoxBImage = PicBoxB.Image;
@@ -88,9 +96,16 @@ namespace _24_21_25_Coursework
             PicBoxWrong1.Visible = false;
             PicBoxWrong2.Visible = false;
             PicBoxWrong3.Visible = false;
-            txtHighScore.Text = thisPlayer.HighScore.ToString();
-            txtScoreBoard.Text = "0";
-            thisPlayer.Score = 0;
+
+
+            //// Get the current screen resolution
+            //Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
+
+            //// Resize the form to a percentage of the screen size
+            //this.Width = (int)(screenBounds.Width * 0.57);
+            //this.Height = (int)(screenBounds.Height * 0.54);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
         }
         private void btnCheckDragAwnser_Click(object sender, EventArgs e)
         {
@@ -202,13 +217,22 @@ namespace _24_21_25_Coursework
      
 
         private void btnCheckDragAwnser_Click_1(object sender, EventArgs e)
-        {          
+        {
+            AnswerCheck();
+            
+            btnNextQuestion.Enabled = true;
+            
+            
+            
+        }
+        private void AnswerCheck()
+        {
             PicBoxA.AllowDrop = false;
             PicBoxB.AllowDrop = false;
             PicBoxC.AllowDrop = false;
             txtScoreBoard.Text = "";
             questionTimer.Stop();
-            questionTimer.Stop(); // Stop countdown
+            
             int timeBonus = CalculateTimeBonus(timeRemaining);
 
             if (AnwserA)
@@ -240,16 +264,18 @@ namespace _24_21_25_Coursework
             {
                 PicBoxWrong3.Visible = true;
             }
-
-            UpdateHighScore(thisPlayer);
+            thisPlayer.Progression = 1;
+            FileManager.UpdateHighScore(thisPlayer);
+            FileManager.UpdateScore(thisPlayer);
+            FileManager.UpdateProgresion(thisPlayer);
+            txtHighScore.Text = thisPlayer.HighScore.ToString();
 
             btnCheckDragAwnser.Enabled = false;
             txtScoreBoard.Text = thisPlayer.Score.ToString();
-            
+
 
             btnCheckDragAwnser.Enabled = false;
             txtScoreBoard.Text = thisPlayer.Score.ToString();
-            
         }
         private int CalculateTimeBonus(int timeLeft)
         {
@@ -257,25 +283,6 @@ namespace _24_21_25_Coursework
             if (timeLeft > 10) return 3;
             if (timeLeft > 0) return 1;
             return 0;
-        }
-
-
-        public void UpdateHighScore(Player thisPlayer) //updates a users high score attribute and writes it to the players.bin file
-        {
-            List<Player> players = new List<Player>();
-            players.AddRange(FileManager.ReadPlayersToList());
-            if (thisPlayer.Score > thisPlayer.HighScore)  // to change to highscore
-            {
-                foreach (Player player in players)
-                {
-                    if (player.Username == thisPlayer.Username)
-                    {
-                        player.HighScore = thisPlayer.Score;
-                        thisPlayer.HighScore = player.HighScore;
-                        FileManager.WritePlayersFile(players);
-                    }
-                }
-            }
         }
 
         private void RemoveImageFromOtherBoxes(PictureBox currentPicBox, Image imageToRemove)
@@ -331,17 +338,22 @@ namespace _24_21_25_Coursework
         private void btnRedo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form Login = new Drag_Drop(thisPlayer);
-            Login.ShowDialog();
+            Form Home = new Drag_Drop(thisPlayer);
+            Home.ShowDialog();
             this.Close();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form form = new HomePage(thisPlayer);
-            form.ShowDialog();
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to go to home page?", "Exit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                questionTimer.Stop();
+                this.Hide();
+                Form form = new Menu(thisPlayer);
+                form.ShowDialog();
+                this.Close();
+            }
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -361,12 +373,7 @@ namespace _24_21_25_Coursework
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void Drag_Drop_MouseHover(object sender, EventArgs e)
-        {
-            HelpReset();
-        }
+        }      
 
         private void HelpReset()
         {
@@ -378,36 +385,22 @@ namespace _24_21_25_Coursework
             PicBoxAvatar.Visible = true;
             txtUsername.Visible = true;
             txtUsernameText.Visible = true;
+            txtTimer.Visible = true;
         }
 
-        private void PicBoxA_MouseHover(object sender, EventArgs e)
+     
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
             HelpReset();
         }
 
-        private void PicBoxB_MouseHover(object sender, EventArgs e)
+        private void btnNextQuestion_Click(object sender, EventArgs e)
         {
-            HelpReset();
-        }
-
-        private void QuestionTime_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PicBox1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void PicBox2_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void PicBox3_Click(object sender, EventArgs e)
-        {
-            
+            this.Hide();
+            Form form = new Random_Question(thisPlayer);
+            form.ShowDialog();
+            this.Close();
         }
     }
 
