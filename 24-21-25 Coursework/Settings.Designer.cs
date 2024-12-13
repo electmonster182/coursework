@@ -29,13 +29,17 @@ namespace _24_21_25_Coursework
         /// </summary>
         private void InitializeComponent()
         {
+            this.button1 = new System.Windows.Forms.Button();
             this.btnChangeUsername = new System.Windows.Forms.Button();
             this.btnChangepassword = new System.Windows.Forms.Button();
             this.btnShowpassword = new System.Windows.Forms.CheckBox();
+            this.txtConfirmPasswordDisplay = new System.Windows.Forms.TextBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.txtUsername2Verify = new System.Windows.Forms.TextBox();
             this.txtPassword2 = new System.Windows.Forms.TextBox();
+            this.txtPasswordDisplay2 = new System.Windows.Forms.TextBox();
             this.txtUsername2 = new System.Windows.Forms.TextBox();
+            this.txtWriteUsername2 = new System.Windows.Forms.TextBox();
             this.txtPassword2Verify = new System.Windows.Forms.TextBox();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnBackGround = new System.Windows.Forms.Button();
@@ -45,6 +49,15 @@ namespace _24_21_25_Coursework
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).BeginInit();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 451);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // btnChangeUsername
             // 
@@ -85,6 +98,20 @@ namespace _24_21_25_Coursework
             this.btnShowpassword.UseVisualStyleBackColor = false;
             this.btnShowpassword.CheckedChanged += new System.EventHandler(this.btnShowpassword_CheckedChanged);
             // 
+            // txtConfirmPasswordDisplay
+            // 
+            this.txtConfirmPasswordDisplay.BackColor = System.Drawing.Color.White;
+            this.txtConfirmPasswordDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConfirmPasswordDisplay.Enabled = false;
+            this.txtConfirmPasswordDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPasswordDisplay.ForeColor = System.Drawing.Color.Black;
+            this.txtConfirmPasswordDisplay.Location = new System.Drawing.Point(190, 170);
+            this.txtConfirmPasswordDisplay.Name = "txtConfirmPasswordDisplay";
+            this.txtConfirmPasswordDisplay.ReadOnly = true;
+            this.txtConfirmPasswordDisplay.Size = new System.Drawing.Size(200, 19);
+            this.txtConfirmPasswordDisplay.TabIndex = 24;
+            this.txtConfirmPasswordDisplay.Text = "Confirm Password";
+            // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -123,6 +150,20 @@ namespace _24_21_25_Coursework
             this.txtPassword2.TabIndex = 2;
             this.txtPassword2.TextChanged += new System.EventHandler(this.txtPassword2_TextChanged);
             // 
+            // txtPasswordDisplay2
+            // 
+            this.txtPasswordDisplay2.BackColor = System.Drawing.Color.White;
+            this.txtPasswordDisplay2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPasswordDisplay2.Enabled = false;
+            this.txtPasswordDisplay2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPasswordDisplay2.ForeColor = System.Drawing.Color.Black;
+            this.txtPasswordDisplay2.Location = new System.Drawing.Point(190, 119);
+            this.txtPasswordDisplay2.Name = "txtPasswordDisplay2";
+            this.txtPasswordDisplay2.ReadOnly = true;
+            this.txtPasswordDisplay2.Size = new System.Drawing.Size(200, 19);
+            this.txtPasswordDisplay2.TabIndex = 21;
+            this.txtPasswordDisplay2.Text = "Enter Password";
+            // 
             // txtUsername2
             // 
             this.txtUsername2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -134,6 +175,20 @@ namespace _24_21_25_Coursework
             this.txtUsername2.Size = new System.Drawing.Size(200, 26);
             this.txtUsername2.TabIndex = 1;
             this.txtUsername2.TextChanged += new System.EventHandler(this.txtUsername2_TextChanged);
+            // 
+            // txtWriteUsername2
+            // 
+            this.txtWriteUsername2.BackColor = System.Drawing.Color.White;
+            this.txtWriteUsername2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtWriteUsername2.Enabled = false;
+            this.txtWriteUsername2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWriteUsername2.ForeColor = System.Drawing.Color.Black;
+            this.txtWriteUsername2.Location = new System.Drawing.Point(190, 20);
+            this.txtWriteUsername2.Name = "txtWriteUsername2";
+            this.txtWriteUsername2.ReadOnly = true;
+            this.txtWriteUsername2.Size = new System.Drawing.Size(200, 19);
+            this.txtWriteUsername2.TabIndex = 20;
+            this.txtWriteUsername2.Text = "Enter Username";
             // 
             // txtPassword2Verify
             // 
@@ -235,10 +290,13 @@ namespace _24_21_25_Coursework
             this.Controls.Add(this.btnChangepassword);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnShowpassword);
+            this.Controls.Add(this.txtConfirmPasswordDisplay);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.txtUsername2Verify);
             this.Controls.Add(this.txtPassword2);
+            this.Controls.Add(this.txtPasswordDisplay2);
             this.Controls.Add(this.txtUsername2);
+            this.Controls.Add(this.txtWriteUsername2);
             this.Controls.Add(this.txtPassword2Verify);
             this.Controls.Add(this.btnBackGround);
             this.Controls.Add(this.picBackGround);
@@ -257,13 +315,18 @@ namespace _24_21_25_Coursework
         }
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnChangeUsername;
         private System.Windows.Forms.Button btnChangepassword;
         private System.Windows.Forms.CheckBox btnShowpassword;
+        private System.Windows.Forms.TextBox txtConfirmPasswordDisplay;
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.TextBox txtUsername2Verify;
         private System.Windows.Forms.TextBox txtPassword2;
+        private System.Windows.Forms.TextBox txtPasswordDisplay2;
         private System.Windows.Forms.TextBox txtUsername2;
+        private System.Windows.Forms.TextBox txtWriteUsername2;
         private System.Windows.Forms.TextBox txtPassword2Verify;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnBackGround;

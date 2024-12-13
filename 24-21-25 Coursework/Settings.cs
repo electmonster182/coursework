@@ -28,7 +28,7 @@ namespace _24_21_25_Coursework
         {
             // Get the current screen resolution
             Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
-
+            
             // Resize the form to a percentage of the screen size
             this.Width = (int)(screenBounds.Width * 0.57);
             this.Height = (int)(screenBounds.Height * 0.54);
@@ -265,7 +265,7 @@ namespace _24_21_25_Coursework
             form.ShowDialog();
             this.Close();
         }
-
+        
         private void txtConfirmPasswordDisplay_TextChanged(object sender, EventArgs e)
         {
 

@@ -24,7 +24,7 @@ namespace _24_21_25_Coursework
         public Random_Question(Player player)
         {
             InitializeComponent();
-            
+
             thisplayer = player;
             txtQuestion.Enabled = false;
         }
@@ -32,7 +32,7 @@ namespace _24_21_25_Coursework
         {
             timeRemaining--;
 
-          
+
             txtTimer.Text = timeRemaining.ToString();
             if (timeRemaining <= 5)
                 txtTimer.ForeColor = Color.Red;
@@ -41,7 +41,7 @@ namespace _24_21_25_Coursework
             {
                 questionTimer.Stop();
                 MessageBox.Show("Time's up!");
-                btnCheckAnswer_Click(null, null); 
+                btnCheckAnswer_Click(null, null);
                 timerfinished = true;
                 answerCheck();
             }
@@ -52,7 +52,7 @@ namespace _24_21_25_Coursework
         }
         private void StartNewQuestion()
         {
-            timeRemaining = 30; 
+            timeRemaining = 30;
             questionTimer.Start();
         }
 
@@ -61,7 +61,7 @@ namespace _24_21_25_Coursework
             Correct.Visible = false;
             Wrong.Visible = false;
             questionTimer = new Timer();
-            questionTimer.Interval = 1000; 
+            questionTimer.Interval = 1000;
             questionTimer.Tick += QuestionTimer_Tick;
             if (timerfinished == false)
                 StartNewQuestion();
@@ -79,13 +79,13 @@ namespace _24_21_25_Coursework
             txtScoreBoard.Text = thisplayer.Score.ToString();
             PicBoxAvatar.Image = thisplayer.Avatar;
             txtHighScore.Text = thisplayer.HighScore.ToString();
-            
+
 
             //Updating quick resume
             thisplayer.Progression = 1;
             FileManager.UpdateProgresion(thisplayer);
-            btnNext.Enabled=false;
-            
+            btnNext.Enabled = false;
+
 
             // Get the current screen resolution
             Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
@@ -94,38 +94,38 @@ namespace _24_21_25_Coursework
             this.Width = (int)(screenBounds.Width * 0.57);
             this.Height = (int)(screenBounds.Height * 0.54);
         }
-        
+
         Questions selectedQuestion;
         public void ChooseRandomQuestion()
         {
 
             List<Questions> questions = FileManager.ReadQuestionsToList();
 
-          
+
             var unusedQuestions = questions.Where(q => !q.QuestionUsed).ToList();
 
-           
+
             if (unusedQuestions.Count == 0)
             {
                 MessageBox.Show("All questions have been used. Resetting them.");
                 ResetQuestionsToUnused(questions);
 
-               
+
                 unusedQuestions = questions.Where(q => !q.QuestionUsed).ToList();
             }
 
-          
+
             Random random = new Random();
             int randomIndex = random.Next(0, unusedQuestions.Count);
-             selectedQuestion = unusedQuestions[randomIndex];
+            selectedQuestion = unusedQuestions[randomIndex];
 
-          
+
             txtQuestion.Text = selectedQuestion.Question;
 
-           
+
             selectedQuestion.QuestionUsed = true;
 
-            
+
             SaveQuestions(questions);
         }
         public void ResetQuestionsToUnused(List<Questions> questions)
@@ -135,17 +135,17 @@ namespace _24_21_25_Coursework
                 question.QuestionUsed = false;
             }
 
-            
+
             SaveQuestions(questions);
         }
         private void SaveQuestions(List<Questions> questions)
         {
             try
             {
-                
+
                 using (Stream sw = File.OpenWrite("Questions.bin"))
                 {
-                    
+
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(sw, questions);
                 }
@@ -199,12 +199,12 @@ namespace _24_21_25_Coursework
             }
             else
                 Wrong.Visible = true;
-            
+
             txtAwser.Enabled = false;
             FileManager.UpdateScore(thisplayer);
 
             btnNext.Enabled = true;
-            
+
             btnCheckAnswer.Enabled = false;
             thisplayer.Progression = 2;
             FileManager.UpdateProgresion(thisplayer);
@@ -226,7 +226,7 @@ namespace _24_21_25_Coursework
             txtUsername.Visible = true;
             txtUsernameText.Visible = true;
         }
-     
+
 
         private void pictureBox1_MouseHover_1(object sender, EventArgs e)
         {

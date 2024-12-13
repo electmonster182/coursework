@@ -216,6 +216,7 @@ namespace _24_21_25_Coursework
             this.btnBackGround.Size = new System.Drawing.Size(1182, 671);
             this.btnBackGround.TabIndex = 80;
             this.btnBackGround.UseVisualStyleBackColor = false;
+           // this.btnBackGround.Click += new System.EventHandler(this.btnBackGround_Click);
             // 
             // btnLeftCar
             // 

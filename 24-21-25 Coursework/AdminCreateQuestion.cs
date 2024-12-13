@@ -20,7 +20,7 @@ namespace _24_21_25_Coursework
 
     public partial class AdminCreateQuestion : Form
     {
-
+        
         bool UserFound = false;
         bool PasswordValid = false;
         bool UsernameValid = false;
@@ -179,7 +179,7 @@ namespace _24_21_25_Coursework
             if (filteredPlayers[amount].Admin == true)
             {
                 ChBoxAdmin.Checked = true;
-            }
+        }
             else
                 ChBoxAdmin.Checked = false;
 
